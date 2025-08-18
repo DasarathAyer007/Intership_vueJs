@@ -1,5 +1,7 @@
 <template>
-<Header/>
+<CountNumber/>
+
+<Form/>
 
 
 <conditional/>
@@ -11,16 +13,13 @@
 </template>
 
 <script>
-import Header from './components/AppHeader.vue'
-import Conditional from './components/ConditonalRender.vue'
-import List from './components/ListRendring.vue'
+import CountNumber from './components/CountNumber.vue'
+import Form from './components/SimpleForm.vue'
 
 export default {
   name: "App",
   components:{
-    Header,
-    Conditional,
-    List
+    CountNumber,Form
   },
 };
 </script>
