@@ -1,26 +1,20 @@
 <template>
-<Header/>
 
 
-<conditional/>
-
-<List/>
-
+<computedProperty   firstName="Dasarath" lastName="Ayer"/>
+<watcherExample/>
 
 
 </template>
 
 <script>
-import Header from './components/AppHeader.vue'
-import Conditional from './components/ConditonalRender.vue'
-import List from './components/ListRendring.vue'
+import computedProperty from './components/computedProperty.vue';
+import watcherExample from './components/watcherExample.vue';
 
 export default {
   name: "App",
   components:{
-    Header,
-    Conditional,
-    List
+    computedProperty,watcherExample
   },
 };
 </script>
