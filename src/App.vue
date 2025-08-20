@@ -1,27 +1,50 @@
 <template>
-<Header/>
 
 
-<conditional/>
+  <NameCard @click="infoPop=!infoPop">
+    <template v-slot:default="slotProps">
+      {{ slotProps.firstName }} {{ slotProps.lastName }}
+    </template>
+  </NameCard>
 
-<List/>
+  <Teleport to="#my-info">
+    <info-pop  v-show="infoPop" @closeInfo="infoPop=false"/>
+  </Teleport>
+
+
+
+
+  <div class="switch-page">
+    <button @click="activePage='PageOne'">PageOne</button>
+    <button @click="activePage='PageTwo'">PageTwo</button>
+  </div>
+
+
+<keep-alive>
+  <component :is="activePage"/>
+</keep-alive>
 
 
 
 </template>
 
 <script>
-import Header from './components/AppHeader.vue'
-import Conditional from './components/ConditonalRender.vue'
-import List from './components/ListRendring.vue'
+import NameCard from './components/NameCard.vue';
+import PageOne from './components/PageOne.vue';
+import PageTwo from './components/PageTwo.vue';
+import InfoPop from './components/InfoPop.vue';
 
 export default {
   name: "App",
   components:{
-    Header,
-    Conditional,
-    List
+    NameCard,PageOne,PageTwo,InfoPop
   },
+  data(){
+    return{
+      activePage:'PageOne',
+      infoPop:false
+    }
+  }
 };
 </script>
 
@@ -33,5 +56,16 @@ export default {
 
   color: #2c3e50;
 
+}
+.switch-page{
+  display:flex;
+  justify-content: center;
+  margin-top: 20px;
+
+
+}
+.switch-page  button{
+    width: 100%;
+    padding:10px;
 }
 </style>
