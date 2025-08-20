@@ -1,27 +1,49 @@
 <template>
-<Header/>
+<button @click="showPopUp=true">Show</button>
+<PopUp v-show="showPopUp" v-on:closePopUp="closPopUp"/>
 
+<MyCard>
+  <template v-slot:header>
+    <h1>Header</h1>
+  </template>
 
-<conditional/>
+  <template v-slot:default>
+    <h3>This is Default</h3>
 
-<List/>
+  </template>
 
+  <template v-slot:footer>
+      <h3>This is footer</h3>
+  </template>
+
+</MyCard>
 
 
 </template>
 
 <script>
-import Header from './components/AppHeader.vue'
-import Conditional from './components/ConditonalRender.vue'
-import List from './components/ListRendring.vue'
+import PopUp from './components/PopUp.vue';
+import MyCard from './components/MyCard.vue';
+
+
 
 export default {
   name: "App",
   components:{
-    Header,
-    Conditional,
-    List
+    PopUp,MyCard
   },
+
+  data(){
+    return{
+      showPopUp:false
+    }
+    
+  },
+  methods:{
+    closPopUp(what){
+      this.showPopUp=what
+    }
+  }
 };
 </script>
 
