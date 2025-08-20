@@ -21,7 +21,7 @@ data(){
 <style scoped>
 .name-card {
   width: 250px;
-  padding: 16px;
+  padding: 6px;
   border: 2px solid #333;
   border-radius: 8px;
   background-color: #fff;

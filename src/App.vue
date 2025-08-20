@@ -1,48 +1,42 @@
 <template>
+  <nav>
 
+    <NameCard @click="infoPop = !infoPop">
+      <template v-slot:default="slotProps">
+        {{ slotProps.firstName }} {{ slotProps.lastName }}
+      </template>
+    </NameCard>
 
-  <NameCard @click="infoPop=!infoPop">
-    <template v-slot:default="slotProps">
-      {{ slotProps.firstName }} {{ slotProps.lastName }}
-    </template>
-  </NameCard>
+    <div>
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link> |
+      <router-link :to="`/profile/${name}`">Profile</router-link>
+    </div>
+
+  </nav>
+  <router-view> </router-view>
 
   <Teleport to="#my-info">
-    <info-pop  v-show="infoPop" @closeInfo="infoPop=false"/>
+    <info-pop v-show="infoPop" @closeInfo="infoPop = false" />
   </Teleport>
-
-
-
-
-  <div class="switch-page">
-    <button @click="activePage='PageOne'">PageOne</button>
-    <button @click="activePage='PageTwo'">PageTwo</button>
-  </div>
-
-
-<keep-alive>
-  <component :is="activePage"/>
-</keep-alive>
-
-
 
 </template>
 
 <script>
-import NameCard from './components/NameCard.vue';
-import PageOne from './components/PageOne.vue';
-import PageTwo from './components/PageTwo.vue';
 import InfoPop from './components/InfoPop.vue';
-
+import NameCard from './components/NameCard.vue';
 export default {
   name: "App",
-  components:{
-    NameCard,PageOne,PageTwo,InfoPop
+
+  components: {
+    InfoPop, NameCard
   },
-  data(){
-    return{
-      activePage:'PageOne',
-      infoPop:false
+
+  data() {
+    return {
+      name: "dasarath",
+      activePage: 'PageOne',
+      infoPop: false
     }
   }
 };
@@ -57,15 +51,25 @@ export default {
   color: #2c3e50;
 
 }
-.switch-page{
-  display:flex;
+
+.switch-page {
+  display: flex;
   justify-content: center;
   margin-top: 20px;
 
 
 }
-.switch-page  button{
-    width: 100%;
-    padding:10px;
+
+.switch-page button {
+  width: 100%;
+  padding: 10px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border: 2px solid black;
 }
 </style>
