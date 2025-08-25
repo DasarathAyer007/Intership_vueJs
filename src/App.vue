@@ -1,26 +1,20 @@
 <template>
-<Header/>
+<h1>State Mangement</h1>
+<CounterNum/>
 
-
-<conditional/>
-
-<List/>
-
+<form-validate/>
 
 
 </template>
 
 <script>
-import Header from './components/AppHeader.vue'
-import Conditional from './components/ConditonalRender.vue'
-import List from './components/ListRendring.vue'
+import CounterNum from './components/CounterNum.vue';
+import FormValidate from './components/FormValidate.vue';
 
 export default {
   name: "App",
   components:{
-    Header,
-    Conditional,
-    List
+    CounterNum,FormValidate
   },
 };
 </script>
@@ -32,6 +26,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
 
   color: #2c3e50;
-
 }
+
 </style>
