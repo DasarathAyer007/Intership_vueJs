@@ -1,28 +1,20 @@
 <template>
-<Header/>
+  <HeaderApp/>
+  <!-- <nav>
+    <router-link to="/">Home</router-link> |
+    <router-link to="/about">About</router-link>
+  </nav> -->
 
-
-<conditional/>
-
-<List/>
-
-
-
+  <router-view/>
 </template>
-
 <script>
-import Header from './components/AppHeader.vue'
-import Conditional from './components/ConditonalRender.vue'
-import List from './components/ListRendring.vue'
-
-export default {
-  name: "App",
+import HeaderApp from './components/HeaderApp.vue';
+export default{
   components:{
-    Header,
-    Conditional,
-    List
-  },
-};
+  HeaderApp
+  }
+
+}
 </script>
 
 <style>
@@ -30,8 +22,20 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
+  text-align: center;
   color: #2c3e50;
+}
 
+nav {
+  padding: 30px;
+}
+
+nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>
